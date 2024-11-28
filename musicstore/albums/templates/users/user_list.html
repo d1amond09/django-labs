@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1> {{ title }} </h1>
+        {% if users %}
+            {% for user in users %}
+                <div class="alert alert-warning">
+                    <h3>{{ user.username }} ({{ user.email }})</h3>
+                    <h4></h4>
+                    <a href="{% url 'user_favorite_genre' user.id %}" class="btn btn-warning">Любимый жанр</a>
+                    <a href="{% url 'user_edit' user.id %}" class="btn btn-warning">Обновить</a>
+                    <a href="{% url 'user_delete' user.id %}" class="btn btn-warning">Удалить</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h4> Нет записей! </h4>
+        {% endif %}
+    </div>
+{% endblock %}

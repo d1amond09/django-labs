@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %} Вход {% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1>Вход</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <input id="username"  type="text" placeholder="Имя пользователя" name="username" required>
+        </div>
+        <div>
+            <input id="password" type="password" placeholder="Пароль" name="password" required>
+        </div>
+        <button type="submit">Войти</button>
+    </form>
+    <p>Нет аккаунта?
+        <a style="color: blue;" href="{% url 'register' %}">Зарегистрироваться</a>
+    </p>
+</div>
+{% endblock %}

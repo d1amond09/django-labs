@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+{% block title %} Любимый жанр пользователя {% endblock %}
+
+{% block content %}
+<div class="features">
+    <h2>Любимый жанр пользователя: {{ user.username }}</h2>
+    {% if genre %}
+        <h4>Любимый жанр: {{ genre }}</h4>
+    {% else %}
+        <h4>У пользователя нет любимого жанра</h4>
+    {% endif %}
+<div/>
+{% endblock %}

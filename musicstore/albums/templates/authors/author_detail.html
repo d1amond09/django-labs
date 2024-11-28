@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block title %} Альбомы автора {{ author.name }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Альбомы автора {{ author.name }}</h1>
+        {% if albums %}
+            {% for album in albums %}
+                <div class="alert alert-warning">
+                    <h3>{{ album.title }} ({{ album.release_date.year }})</h3>
+                    <h4>Автор:<i><a href="{% url 'author_detail' album.author.id %}"> {{ album.author }}</a></i></h4>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Пусто</p>
+        {% endif %}
+    </div>
+{% endblock %}

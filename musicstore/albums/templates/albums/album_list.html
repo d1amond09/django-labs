@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1> {{ title }} </h1>
+        {% if albums %}
+            {% for album in albums %}
+                <div class="alert alert-warning">
+                    <h3>{{ album.title }} ({{ album.release_date.year }})</h3>
+                    <h4>Автор:<i><a href="{% url 'author_detail' album.author.id %}"> {{ album.author }}</a></i></h4>
+                    <h4>Жанры:</h4>
+                    <ul>
+                        {% for genre in album.genres.all %}
+                            <li style="color: black;">{{genre.name}}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{% url 'album_edit' album.id %}" class="btn btn-warning">Обновить</a>
+                    <a href="{% url 'album_delete' album.id %}" class="btn btn-warning">Удалить</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h4> Нет записей! </h4>
+        {% endif %}
+    </div>
+{% endblock %}

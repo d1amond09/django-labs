@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block title %} Вход {% endblock %}
+
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Renders the form fields -->
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Регистрация</button>
+</form>
+{% endblock %}

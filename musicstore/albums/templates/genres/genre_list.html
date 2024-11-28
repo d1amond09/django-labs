@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Жанры{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Жанры</h1>
+        {% if genres %}
+            {% for genre in genres %}
+                <div class="alert alert-warning">
+                    <h3>{{ genre.name }}</h3>
+                    <a href="{% url 'genre_edit' genre.id %}" class="btn btn-warning">Обновить</a>
+                    <a href="{% url 'genre_delete' genre.id %}" class="btn btn-warning">Удалить</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Пусто</p>
+        {% endif %}
+    </div>
+{% endblock %}

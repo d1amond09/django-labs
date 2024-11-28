@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Форма по изменению пользователя{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h2>Редактировать пользователя</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.username }}<br>
+            {{ form.email }}<br>
+            {{ form.password }}<br>
+            <span>{{ error }}</span>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+    </div>
+{% endblock %}
